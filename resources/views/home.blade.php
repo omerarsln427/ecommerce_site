@@ -59,7 +59,7 @@
     </div>
 </section>
 
-<section class="container products">
+<<section class="container products">
     <h2>Popular Products</h2>
 
     <div class="product-grid">
@@ -71,18 +71,24 @@
                     <div class="product-image">No Image</div>
                 @endif
 
-                <h3>{{ $product->title }}</h3>
+                <h3>
+                    <a href="{{ route('product.detail', $product->id) }}" style="color:#111827; text-decoration:none;">
+                        {{ $product->title }}
+                    </a>
+                </h3>
+
                 <p>{{ $product->description }}</p>
                 <p><strong>${{ $product->price }}</strong></p>
 
-                <button>Add to Cart</button>
+                <a href="{{ route('product.detail', $product->id) }}">
+                    <button>View Details</button>
+                </a>
             </div>
         @empty
             <p>No products available.</p>
         @endforelse
     </div>
 </section>
-
 <footer class="footer">
     <p>&copy; 2026 StyleHub. All rights reserved.</p>
 </footer>

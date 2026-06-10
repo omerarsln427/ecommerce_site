@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('home', compact('products'));
 });
 
+Route::get('/product/{product}', function (Product $product) {
+    return view('product-detail', compact('product'));
+})->name('product.detail');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', ProductController::class);
 });
