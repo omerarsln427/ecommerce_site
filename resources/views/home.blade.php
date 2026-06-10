@@ -63,26 +63,23 @@
     <h2>Popular Products</h2>
 
     <div class="product-grid">
-        <div class="product-card">
-            <div class="product-image">Product Image</div>
-            <h3>Classic T-Shirt</h3>
-            <p>$19.99</p>
-            <button>Add to Cart</button>
-        </div>
+        @forelse($products as $product)
+            <div class="product-card">
+                @if($product->image)
+                    <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->title }}" class="product-photo">
+                @else
+                    <div class="product-image">No Image</div>
+                @endif
 
-        <div class="product-card">
-            <div class="product-image">Product Image</div>
-            <h3>Sport Shoes</h3>
-            <p>$49.99</p>
-            <button>Add to Cart</button>
-        </div>
+                <h3>{{ $product->title }}</h3>
+                <p>{{ $product->description }}</p>
+                <p><strong>${{ $product->price }}</strong></p>
 
-        <div class="product-card">
-            <div class="product-image">Product Image</div>
-            <h3>Leather Bag</h3>
-            <p>$39.99</p>
-            <button>Add to Cart</button>
-        </div>
+                <button>Add to Cart</button>
+            </div>
+        @empty
+            <p>No products available.</p>
+        @endforelse
     </div>
 </section>
 
