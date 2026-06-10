@@ -89,7 +89,7 @@
             <br>
 
             <a href="/" class="btn">Continue Shopping</a>
-            <a href="#" class="btn">Checkout</a>
+            <a href="{{ route('checkout.index') }}" class="btn">Checkout</a>
         </div>
     @else
         <div style="background:white; padding:25px; margin-top:25px; border-radius:10px;">
