@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Models\Product;
+use App\Http\Controllers\Admin\OrderController;
 
 Route::get('/', function () {
     $products = Product::where('status', true)->latest()->take(6)->get();
@@ -27,4 +28,8 @@ Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])-
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', ProductController::class);
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+    Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 });
