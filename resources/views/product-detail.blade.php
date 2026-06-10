@@ -14,7 +14,7 @@
         <nav>
             <a href="/">Home</a>
             <a href="/admin/products">Admin Products</a>
-            <a href="#">Cart</a>
+            <a href="{{ route('cart.index') }}">Cart</a>
             <a href="#">Login</a>
         </nav>
     </div>
@@ -57,7 +57,10 @@
                 </p>
             @endif
 
-            <button class="cart-btn">Add to Cart</button>
+            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+    @csrf
+    <button type="submit" class="cart-btn">Add to Cart</button>
+</form>
 
             <br><br>
 

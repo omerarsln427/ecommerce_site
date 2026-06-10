@@ -15,7 +15,7 @@
         <nav>
             <a href="/">Home</a>
             <a href="#">Products</a>
-            <a href="#">Cart</a>
+            <a href="{{ route('cart.index') }}">Cart</a>
             <a href="#">Login</a>
         </nav>
     </div>

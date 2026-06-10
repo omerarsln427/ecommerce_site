@@ -1,36 +1,25 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-return new class extends Migration
+use Illuminate\Database\Eloquent\Model;
+
+class Cart extends Model
 {
-    public function up(): void
+    protected $fillable = [
+        'user_id',
+        'product_id',
+        'quantity',
+        'price',
+    ];
+
+    public function product()
     {
-        Schema::create('carts', function (Blueprint $table) {
-            $table->id();
-
-            $table->foreignId('user_id')
-                ->nullable()
-                ->constrained()
-                ->onDelete('cascade');
-
-            $table->foreignId('product_id')
-                ->constrained()
-                ->onDelete('cascade');
-
-            $table->integer('quantity')->default(1);
-            $table->decimal('price', 10, 2);
-
-            $table->timestamps();
-
-            $table->unique(['user_id', 'product_id']);
-        });
+        return $this->belongsTo(Product::class);
     }
 
-    public function down(): void
+    public function user()
     {
-        Schema::dropIfExists('carts');
+        return $this->belongsTo(User::class);
     }
-};
+}
