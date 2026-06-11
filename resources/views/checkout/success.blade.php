@@ -12,10 +12,28 @@
         <h1 class="logo">StyleHub</h1>
 
         <nav>
-            <a href="/">Home</a>
-            <a href="{{ route('cart.index') }}">Cart</a>
-            <a href="/admin/products">Admin Products</a>
-        </nav>
+    <a href="/">Home</a>
+    <a href="{{ route('cart.index') }}">Cart</a>
+
+    @auth
+        @if(auth()->user()->hasRole('admin'))
+            <a href="{{ route('admin.products.index') }}">Admin Products</a>
+            <a href="{{ route('admin.orders.index') }}">Admin Orders</a>
+        @endif
+
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+
+        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit" style="background:none; border:none; color:white; font-weight:bold; cursor:pointer;">
+                Logout
+            </button>
+        </form>
+    @else
+        <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('register') }}">Register</a>
+    @endauth
+</nav>
     </div>
 </header>
 

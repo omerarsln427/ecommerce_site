@@ -11,10 +11,18 @@
     <div class="container nav">
         <h1 class="logo">StyleHub Admin</h1>
         <nav>
-            <a href="/">Home</a>
-            <a href="{{ route('admin.products.index') }}">Products</a>
-            <a href="{{ route('admin.products.create') }}">Add Product</a>
-        </nav>
+    <a href="/">Home</a>
+    <a href="{{ route('admin.products.index') }}">Products</a>
+    <a href="{{ route('admin.products.create') }}">Add Product</a>
+    <a href="{{ route('admin.orders.index') }}">Orders</a>
+
+    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+        @csrf
+        <button type="submit" style="background:none; border:none; color:white; font-weight:bold; cursor:pointer; margin-left:20px; font-size:16px;">
+    Logout
+</button>
+    </form>
+</nav>
     </div>
 </header>
 

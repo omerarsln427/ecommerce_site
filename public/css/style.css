@@ -235,4 +235,10 @@ nav a:hover {
     .detail-card {
         grid-template-columns: 1fr;
     }
+}nav form {
+    display: inline;
+}
+
+nav button {
+    font-family: Arial, sans-serif;
 }
