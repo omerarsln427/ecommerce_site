@@ -76,7 +76,7 @@
     </div>
 </section>
 
-<<section class="container products">
+<section class="container products">
     <h2>Popular Products</h2>
 
     <div class="product-grid">
